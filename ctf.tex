@@ -3,6 +3,8 @@
 
 \usepackage{parskip}
 \usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{booktabs}
 
 \let\oldtexttt\texttt
 \renewcommand{\texttt}[1]{{\color{pink}{\oldtexttt{#1}}}}
@@ -154,6 +156,143 @@
     \texttt{rm a b c} & remove files \texttt{a}, \texttt{b}, and \texttt{c} \\
     \texttt{rm -r haxx/} & recursively removes all files in \texttt{haxx/} and itself \\
   \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{cat}}
+  Concatenate---prints out files' contents
+\end{frame}
+
+\begin{frame}{\texttt{cat}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{cat hello} & prints out contents of \texttt{hello} \\
+    \texttt{cat a b c} & prints out \texttt{a}, followed by \texttt{b}, then \texttt{c}
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{less}}
+  Similar to \texttt{cat}, but ``smarter''
+
+  Contents can be ``paged'' and searched
+\end{frame}
+
+\begin{frame}{\texttt{less}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{less exploit} & shows contents of \texttt{exploit}
+  \end{tabularx}
+
+  Up, Down, Home, End to scroll pages
+
+  Search with \texttt{/}\emph{\texttt{<query>}}\texttt{<Enter>}
+\end{frame}
+
+\begin{frame}{\texttt{>}}
+  Take output and inserts into a file
+
+  Output of left side > file
+
+  \alert{Careful!} You may lose data.
+\end{frame}
+
+\begin{frame}{\texttt{>}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{cat a > b} & takes output of \texttt{cat a} and puts it into file \texttt{b} \\
+    \texttt{ls -l > files} & takes file list as a list (\texttt{-l}) and saves it into a file called \texttt{files}
+  \end{tabularx}
+\end{frame}
+
+\subsection{Useful UNIX tools}
+\frame{\subsectionpage}
+
+\begin{frame}{\texttt{strings}}
+  Prints out ``readable'' strings
+\end{frame}
+
+\begin{frame}{\texttt{strings}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{strings a.exe} & prints out human-readable strings of \texttt{a.exe} \\
+    \texttt{strings lib.png > temp} & saves strings from \texttt{lib.png} into \texttt{temp}
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{file}}
+  Determines file type from contents
+
+  Makes good guesses based on magic bytes
+\end{frame}
+
+\begin{frame}{\texttt{file}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{file a.png} & prints out determined file type (probably PNG image data) \\
+    \texttt{file out} & checks contents and makes a guess at \texttt{out}'s type
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{grep}}
+  Searches for patterns in files
+\end{frame}
+
+\begin{frame}{\texttt{grep}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{grep 'aBc' xyz} & searches for \texttt{aBc} in \texttt{xyz} \\
+    \texttt{grep -i 'flag' a} & searches for \texttt{flag} (case-insensitive) in \texttt{a} \\
+    \texttt{ls | grep -i 'dir'} & searches output of \texttt{ls} for \texttt{dir} (case-insensitive)
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{xxd}}
+  Prints out file bytes in hex format
+
+  ASCII column on the right
+\end{frame}
+
+\begin{frame}{\texttt{xxd}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{xxd a.png} & prints out \texttt{a.png}'s bytes \\
+    \texttt{xxd -c 32 a.png} & same as above, but double the columns
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{objdump}}
+  Disassemble executables
+
+  Prints out machine code instructions
+\end{frame}
+
+\begin{frame}{\texttt{objdump}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{objdump -d a.exe} & disassembles and prints out assembly code of \texttt{a.exe} \\
+    \texttt{objdump -d a.exe > disas} & same as above, but save to file \texttt{disas}
+  \end{tabularx}
+\end{frame}
+
+\subsection{Web tools}
+\frame{\subsectionpage}
+
+\begin{frame}{CyberChef}
+  \url{https://gchq.github.io/CyberChef/}
+
+  Swiss-army knife to handle data
+
+  Learn to recognize patterns in data
+\end{frame}
+
+\begin{frame}{CyberChef}
+  \small
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{ZmxhZ3t0ZXN0fQ==} & \emph{looks} like \texttt{Base64}, use 'From Base64' recipe \\
+    \midrule
+    \texttt{flag\%7Burl\_encoded\%7D} & URL Decode \\
+    \midrule
+    \texttt{66 6c 61 67 7b 68 65 78 7d} & From Hex \\
+    \midrule
+    \texttt{Idk} & Try 'Magic' recipe \\
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{Browser dev tools}
+  ``Inspect element...''
+
+  \texttt{<Ctrl><Shift><I>}
 \end{frame}
 
 \end{document}
