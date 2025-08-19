@@ -1,0 +1,159 @@
+\documentclass[17pt]{beamer}
+\usecolortheme{owl}
+
+\usepackage{parskip}
+\usepackage{tabularx}
+
+\let\oldtexttt\texttt
+\renewcommand{\texttt}[1]{{\color{pink}{\oldtexttt{#1}}}}
+
+\title{CTF}
+\subtitle{\texttt{\\flag\{shortandquick\}}}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{Categories}
+
+\frame{\sectionpage}
+
+\begin{frame}{Cryptography}
+  ``Secret writing''
+
+  \texttt{Base64}...???
+
+  \texttt{XGZsYWd7aGVyZSBpdCBpc30=}
+\end{frame}
+
+\begin{frame}{Steganography}
+  Hiding data in plain sight
+\end{frame}
+
+\begin{frame}{Web exploitation}
+  Analyzing web requests
+
+  ``Inspect source...''
+\end{frame}
+
+\begin{frame}{Reverse engineering}
+  Analyzing binaries or programs
+
+  \texttt{hexdump}, \emph{Ghidra}
+\end{frame}
+
+\begin{frame}{Forensics}
+  Combing through data
+
+  Examining logs, PCAPs, iso
+\end{frame}
+
+\begin{frame}{Binary exploitation}
+  Buffer overflows
+\end{frame}
+
+\begin{frame}{Miscellaneous}
+  General puzzles, logic problems, ``common sense'', \emph{OSINT}
+\end{frame}
+
+\section{Tools}
+\frame{\sectionpage}
+
+\subsection{Linux terminal}
+\frame{\subsectionpage}
+
+\begin{frame}{\texttt{ls}}
+  List stuff(?)
+
+  Prints out files in directory
+
+  Each directory has a special \texttt{.} (current dir) and \texttt{..} (parent directory) file
+\end{frame}
+
+\begin{frame}{\texttt{ls}}
+  ``Switches'' (\texttt{-a}, \texttt{-b}, etc.) change behavior
+
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{ls}, \texttt{ls .} & list files in current directory \\
+    \texttt{ls ./exploit} & list files in directory named \texttt{exploit} \\
+    \texttt{ls -a} & list \emph{all} files in current directory \\
+    \texttt{ls -l} & list files in list format \\
+  \end{tabularx}
+
+\end{frame}
+
+\begin{frame}{\texttt{mkdir}}
+  Makes a directory
+\end{frame}
+
+\begin{frame}{\texttt{mkdir}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{mkdir temp} & makes a directory named \texttt{temp} \\
+    \texttt{mkdir -p a/b} & makes a directory \texttt{b} in \texttt{a} (and creates \texttt{a} if it doesn't exist)
+  \end{tabularx}
+\end{frame}
+
+\begin{frame}{\texttt{cd}}
+  Change directory
+
+  ``Moves'' current directory into a new one
+\end{frame}
+
+\begin{frame}{\texttt{cd}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{cd exploit} & move into a directory called \texttt{exploit} \\
+    \texttt{cd ..} & move up a directory \\
+    \texttt{cd a/b} & move into a directory called \texttt{b} inside of \texttt{a} \\
+    \texttt{cd /} & move into the root directory
+  \end{tabularx}
+
+  \texttt{cd ..} can be chained: \texttt{cd ../../../..} moves 4 directories up
+\end{frame}
+
+\begin{frame}{\texttt{cp}}
+  Copy files
+
+  \alert{Careful!} You may lose data.
+\end{frame}
+
+\begin{frame}{\texttt{cp}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{cp a b} & copy \texttt{a} to a file \texttt{b} \\
+    \texttt{cp a b c/} & copy \texttt{a}, \texttt{b} to a dir \texttt{c/} \\
+    \texttt{cp -r dir1/ dir2/} & copy directory \texttt{dir1/} and its files to \texttt{dir2/}
+  \end{tabularx}
+
+  \texttt{cp} creates a copy OR overwrites
+\end{frame}
+
+\begin{frame}{\texttt{mv}}
+  Move files
+
+  \alert{Careful!} You may lose data.
+\end{frame}
+
+\begin{frame}{\texttt{mv}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{mv a b} & move \texttt{a} to a file \texttt{b} \\
+    \texttt{mv a b c/} & move \texttt{a}, \texttt{b} into a dir \texttt{c/} \\
+    \texttt{mv dir1/ dir2/} & move directory \texttt{dir1/} and its files into \texttt{dir2/}
+  \end{tabularx}
+
+  \texttt{mv} moves (i.e., renames) OR overwrites
+\end{frame}
+
+\begin{frame}{\texttt{rm}}
+  Removes files
+
+  \alert{Careful!} You may lose data.
+\end{frame}
+
+\begin{frame}{\texttt{rm}}
+  \begin{tabularx}{\framewidth}{lX}
+    \texttt{rm exploit.txt} & removes a file \texttt{exploit.txt} in the current dir \\
+    \texttt{rm a b c} & remove files \texttt{a}, \texttt{b}, and \texttt{c} \\
+    \texttt{rm -r haxx/} & recursively removes all files in \texttt{haxx/} and itself \\
+  \end{tabularx}
+\end{frame}
+
+\end{document}
